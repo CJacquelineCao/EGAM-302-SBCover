@@ -8,11 +8,25 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     [SerializeField] private Canvas canvas;
     public RectTransform _transform;
     public CanvasGroup canvasGroup;
+    public EditorMenu editorref;
+    public bool Valid;
+    public bool Addded;
     void Awake()
     {
         _transform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
+    }
+    private void FixedUpdate()
+    {
+        if(canvasGroup.alpha ==1)
+        {
+            Valid = true;
+        }
+        else
+        {
+            Valid = false;
+        }
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -33,8 +47,6 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     {
         Debug.Log("MouseDown");
     }
-
-
 
     // Update is called once per frame
     void Update()

@@ -10,10 +10,14 @@ public class CreateStickerToDrag : MonoBehaviour, IInitializePotentialDragHandle
     public GameObject parentCanvas;
     public RectTransform _transform;
     public GameObject createdsticker;
-    private Canvas _canvas;
     void Awake()
     {
-        _canvas = parentCanvas.GetComponent<Canvas>();
+        parentCanvas = GameObject.FindGameObjectWithTag("Canvas");
+        _transform = GetComponent<RectTransform>();
+    }
+    private void Start()
+    {
+       
         _transform = GetComponent<RectTransform>();
     }
 
@@ -21,6 +25,11 @@ public class CreateStickerToDrag : MonoBehaviour, IInitializePotentialDragHandle
     {
         Debug.Log("" + _transform.anchoredPosition);
         createdsticker = Instantiate(testUI, _transform.anchoredPosition, Quaternion.identity);
+        createdsticker.GetComponent<DragAndDrop>().enabled = true;
+        if(createdsticker.GetComponent<CreateStickerToDrag>() !=null)
+        {
+            createdsticker.GetComponent<CreateStickerToDrag>().enabled = false;
+        }
         createdsticker.transform.SetParent(parentCanvas.transform, false);
         eventData.pointerDrag = createdsticker;
     }
