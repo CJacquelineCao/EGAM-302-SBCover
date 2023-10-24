@@ -24,13 +24,14 @@ public class CreateStickerToDrag : MonoBehaviour, IInitializePotentialDragHandle
     public void OnInitializePotentialDrag(PointerEventData eventData)
     {
         Debug.Log("" + _transform.anchoredPosition);
-        createdsticker = Instantiate(testUI, _transform.anchoredPosition, Quaternion.identity);
+        createdsticker = Instantiate(testUI, _transform.position, Quaternion.identity);
         createdsticker.GetComponent<DragAndDrop>().enabled = true;
         if(createdsticker.GetComponent<CreateStickerToDrag>() !=null)
         {
             createdsticker.GetComponent<CreateStickerToDrag>().enabled = false;
         }
         createdsticker.transform.SetParent(parentCanvas.transform, false);
+        createdsticker.transform.position = _transform.position;
         eventData.pointerDrag = createdsticker;
     }
     public void OnDrag(PointerEventData eventData)

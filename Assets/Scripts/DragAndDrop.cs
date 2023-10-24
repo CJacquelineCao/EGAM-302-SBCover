@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     [SerializeField] private Canvas canvas;
     public RectTransform _transform;
@@ -16,6 +16,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         _transform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
+        editorref = GameObject.FindObjectOfType<EditorMenu>();
     }
     private void FixedUpdate()
     {
@@ -36,7 +37,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("Dragging");
-        _transform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        _transform.position += (Vector3)eventData.delta * canvas.transform.localScale.x /canvas.scaleFactor;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -47,7 +48,10 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     {
         Debug.Log("MouseDown");
     }
-
+    public void OnDrop(PointerEventData eventData)
+    {
+        editorref.OnDrop(eventData);
+    }
     // Update is called once per frame
     void Update()
     {
