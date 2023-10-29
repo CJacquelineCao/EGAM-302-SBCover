@@ -11,6 +11,7 @@ public class ComboMenu : MonoBehaviour
     {
         public Vector3 Location;
         public GameObject stickerSprite;
+        public GameObject originalSticker;
         public GameObject MenuSlot;
     }
     public List<ComboItem> allCombos = new List<ComboItem>();
@@ -34,26 +35,32 @@ public class ComboMenu : MonoBehaviour
         }
 
     }
-    public void addToList(GameObject stickerCombo)
+    public void addToList(GameObject stickerCombo, GameObject OGsticker)
     {
         for (int i = 0; i < allCombos.Count; i++)
         {
             if(allCombos[i].stickerSprite == null)
             {
                 allCombos[i].stickerSprite = stickerCombo;
+                allCombos[i].originalSticker = OGsticker;
             }
         }
 
     }
-    void CreateComboBar()
+
+    public void CreateComboBar()
     {
         for (int i = 0; i < allCombos.Count; i++)
         {
             allCombos[i].MenuSlot = Instantiate(allCombos[i].stickerSprite, allCombos[i].Location, Quaternion.identity);
             allCombos[i].MenuSlot.transform.SetParent(gameObject.transform, false);
             allCombos[i].MenuSlot.GetComponent<DragAndDrop>().enabled = false;
+            allCombos[i].MenuSlot.GetComponent<CreateStickerToDrag>().testUI = allCombos[i].originalSticker;
             allCombos[i].MenuSlot.SetActive(true);
         }
         generated = true;
     }
+
+
+
 }

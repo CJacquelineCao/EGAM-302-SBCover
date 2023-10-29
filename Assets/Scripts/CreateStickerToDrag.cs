@@ -25,6 +25,10 @@ public class CreateStickerToDrag : MonoBehaviour, IInitializePotentialDragHandle
     {
         Debug.Log("" + _transform.anchoredPosition);
         createdsticker = Instantiate(testUI, _transform.position, Quaternion.identity);
+        if(createdsticker.activeSelf == false)
+        {
+            createdsticker.SetActive(true);
+        }
         createdsticker.GetComponent<DragAndDrop>().enabled = true;
         if(createdsticker.GetComponent<CreateStickerToDrag>() !=null)
         {
