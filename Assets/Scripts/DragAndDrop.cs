@@ -9,18 +9,24 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     public RectTransform _transform;
     public CanvasGroup canvasGroup;
     public EditorMenu editorref;
+    public EEOO comboref;
     public bool Valid;
     public bool Addded;
+
+    GameObject ModPanel;
+
     void Awake()
     {
         _transform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         editorref = GameObject.FindObjectOfType<EditorMenu>();
+
     }
     private void FixedUpdate()
     {
-        if(canvasGroup.alpha ==1)
+
+        if (canvasGroup.alpha ==1)
         {
             Valid = true;
         }
@@ -33,6 +39,13 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     {
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
+        ModPanel = GameObject.FindGameObjectWithTag("mod");
+        comboref = GameObject.FindObjectOfType<EEOO>();
+        if (ModPanel !=null)
+        {
+            ModPanel.GetComponent<ModPanel>().unParentModChannel();
+        }
+
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -50,7 +63,17 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        editorref.OnDrop(eventData);
+        if(editorref !=null)
+        {
+            editorref.OnDrop(eventData);
+        }
+
+        if(comboref !=null)
+        {
+            comboref.OnDrop(eventData);
+        }
+
+
     }
     // Update is called once per frame
     void Update()

@@ -46,5 +46,6 @@ public class StickerMenu : MonoBehaviour, IDropHandler
             allItems[i].MenuSlot.GetComponent<Image>().sprite = allItems[i].stickerSprite;
         }
     }
+
 }
 
