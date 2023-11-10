@@ -19,8 +19,20 @@ public class EEOO : MonoBehaviour, IDropHandler
             ComboStickers.Add(eventData.pointerDrag.gameObject);
             eventData.pointerDrag.GetComponent<DragAndDrop>().Addded = true;
 
-            overlapdetection.GetComponent<CheckOverlap>().checkOverlaps();
         }
+        foreach (GameObject sticker in ComboStickers)
+        {
+            foreach (Transform child in sticker.gameObject.transform)
+            {
+                GameObject Image = child.transform.GetChild(0).gameObject;
+
+                overlapdetection.GetComponent<CheckOverlap>().ChangeColor(Image, Color.white);
+
+
+
+            }
+        }
+        overlapdetection.GetComponent<CheckOverlap>().checkOverlaps();
     }
     // Start is called before the first frame update
     void Start()
@@ -32,14 +44,6 @@ public class EEOO : MonoBehaviour, IDropHandler
     void Update()
     {
         Savestickers();
-        if (canbeSaved == true)
-        {
-            savebutton.interactable = true;
-        }
-        else
-        {
-            savebutton.interactable = false;
-        }
     }
     void Savestickers()
     {
@@ -52,6 +56,27 @@ public class EEOO : MonoBehaviour, IDropHandler
             else
             {
                 canbeSaved = false;
+            }
+        }
+    }
+    public void setStickersInactive()
+    {
+        for (int i = 0; i < ComboStickers.Count; i++)
+        {
+            if(ComboStickers[i] !=null)
+            {
+                ComboStickers[i].SetActive(false);
+            }
+        }
+    }
+
+    public void setStickersActive()
+    {
+        for (int i = 0; i < ComboStickers.Count; i++)
+        {
+            if (ComboStickers[i] != null)
+            {
+                ComboStickers[i].SetActive(true);
             }
         }
     }

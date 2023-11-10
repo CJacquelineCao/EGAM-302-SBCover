@@ -31,9 +31,9 @@ public class IAmACombo : MonoBehaviour,IInitializePotentialDragHandler, IDragHan
 
         }
         createdsticker.GetComponent<DragAndDrop>().enabled = true;
-        if (createdsticker.GetComponent<CreateStickerToDrag>() != null)
+        if (createdsticker.GetComponent<IAmACombo>() != null)
         {
-            createdsticker.GetComponent<CreateStickerToDrag>().enabled = false;
+            createdsticker.GetComponent<IAmACombo>().enabled = false;
         }
         createdsticker.transform.SetParent(parentCanvas.transform, false);
         createdsticker.transform.position = _transform.position;

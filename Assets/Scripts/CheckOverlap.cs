@@ -22,10 +22,11 @@ public class CheckOverlap : MonoBehaviour
     public Button saveLayoutbutton;
 
     ScreenController screenref;
+
+    public EEOO combolayoutbg;
     void Start()
     {
         screenref = GameObject.FindObjectOfType<ScreenController>();
-
     }
     
     public void checkOverlaps()
@@ -43,12 +44,13 @@ public class CheckOverlap : MonoBehaviour
                 int objectsHit = Physics2D.OverlapCircle(testpos, detectionRadius, contactFilter, overlapcircleResults);
                 //check if objects hit is > 1
                 // make new list of comboscript
-                if(objectsHit>=1)
+                if(objectsHit>1)
                 {
-                    List<IAmACombo> allCombs = new List<IAmACombo>();
-                    for (int i = 0; i < overlapcircleResults.Length; i++)
+                    List<TotallyACombo> allCombs = new List<TotallyACombo>();
+                    for (int i = 0; i < objectsHit; i++)
                     {
-                        IAmACombo currentStickerCont = overlapcircleResults[i].gameObject.transform.parent.GetComponent<IAmACombo>();
+                        TotallyACombo currentStickerCont = overlapcircleResults[i].GetComponentInParent<TotallyACombo>();
+                            
                         if(currentStickerCont!=null)
                         {
                             if (!allCombs.Contains(currentStickerCont))
@@ -58,36 +60,31 @@ public class CheckOverlap : MonoBehaviour
                         }
 
                     }
-                    objectsDetected = allCombs.Count;
-                    foreach (IAmACombo combo in allCombs)
+                    if(allCombs.Count>objectsDetected )
+                    {
+                        objectsDetected = allCombs.Count;
+                    }
+
+                    foreach (TotallyACombo combo in allCombs)
                     {
                         foreach(Transform child in combo.gameObject.transform)
                         {
                             GameObject Image = child.transform.GetChild(0).gameObject;
-                            ChangeColor(Image, Color.red);
+                            if (allCombs.Count > 1)
+                            {
+                                ChangeColor(Image, Color.red);
+                            }
+
 
                         }
                     }
-                }
-                else
-                {
-                    foreach (Transform child in overlapcircleResults[0].gameObject.transform)
-                    {
-                        GameObject Image = child.transform.GetChild(0).gameObject;
-                        ChangeColor(Image, Color.white);
-                    }
-                        
                 }
 
                 //loop from 0 to objects hit in overlapcircle results
                 // each item in item in overlapcircle results getcomponent in parent of comboscript
                 // if comboscript list doesnt contains the current comboscript, add to list
                 //size of list is how many are overlapping, the contents is what stickercombos need to be modified
-                //if (objectsHit > objectsDetected)
-                //{
-                //    objectsDetected = objectsHit;
-                    
-                //}
+
             }
         }
         if(objectsDetected >1)
@@ -100,7 +97,7 @@ public class CheckOverlap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        saveLayout();
         if (Saveable == true)
         {
             saveLayoutbutton.interactable = true;
@@ -111,17 +108,25 @@ public class CheckOverlap : MonoBehaviour
         }
     }
 
-    void ChangeColor(GameObject sticker, Color color)
+   public void ChangeColor(GameObject sticker, Color color)
     {
-        sticker.GetComponent<Image>().material.color = color;
+        sticker.GetComponent<Image>().color = color;
     }
 
     void saveLayout()
     {
-        //if all objects are white && if(EEOO.ComboStickers[i].GetComponent<DragAndDrop>().Valid == true)
-        Saveable = true;
-        //else
-        Saveable = false;
+        if(objectsDetected <= 1 && combolayoutbg.canbeSaved == true)
+        {
+            
+            Saveable = true;
+            //else
+
+        }
+        else
+        {
+            Saveable = false;
+        }
+
     }
 
     public void switchBacktoEditor()

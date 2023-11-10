@@ -38,6 +38,7 @@ public class ComboMenu : MonoBehaviour
     }
     public void addToList(GameObject stickerCombo, GameObject OGsticker)
     {
+        generated = false;
         for (int i = 0; i < allCombos.Count; i++)
         {
             if(allCombos[i].stickerSprite == null)

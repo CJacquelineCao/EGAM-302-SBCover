@@ -9,10 +9,12 @@ public class ScreenController : MonoBehaviour
     public GameObject ComboScreen;
 
     public EditorMenu editorref;
+    public EEOO comboref;
     // Start is called before the first frame update
     void Start()
     {
-        
+
+
     }
 
     // Update is called once per frame
@@ -28,9 +30,11 @@ public class ScreenController : MonoBehaviour
         editorref.CreateStickerCombo();
         ComboScreen.SetActive(true);
         EditorScreen.SetActive(false);
+        comboref.setStickersActive();
     }
     public void TurnonEditorScreen()
     {
+        comboref.setStickersInactive();
         ComboScreen.SetActive(false);
         EditorScreen.SetActive(true);
     }
