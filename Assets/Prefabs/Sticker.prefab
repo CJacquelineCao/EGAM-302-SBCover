@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 2300972325452982056}
   - component: {fileID: 2300972325452982057}
   - component: {fileID: 8819018652015974900}
+  - component: {fileID: 2026898908350200839}
   m_Layer: 6
   m_Name: Sticker
   m_TagString: Untagged
@@ -228,6 +229,45 @@ MonoBehaviour:
   inCombo: 0
   editorRef: {fileID: 0}
   totalLayers: 0
+--- !u!60 &2026898908350200839
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2300972325452982036}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 33.305725, y: -16.7677}
+      - {x: 32.733643, y: 6.38562}
+      - {x: 23.066223, y: 18.640564}
+      - {x: 12.2948, y: 24.126465}
+      - {x: 18.129456, y: 25.842102}
+      - {x: 17.53424, y: 31.027405}
+      - {x: 10.884576, y: 30.993954}
+      - {x: 2.261519, y: 24.834782}
+      - {x: -7.213806, y: 25.349182}
+      - {x: -21.996277, y: 18.784912}
+      - {x: -29.448975, y: -0.3624878}
+      - {x: -24.881104, y: -20.57544}
+      - {x: 3.6563277, y: -31.932278}
+      - {x: 24.403145, y: -23.80054}
 --- !u!1 &8046239607402562404
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +280,7 @@ GameObject:
   - component: {fileID: 5366843767485989488}
   - component: {fileID: 5227090126851676506}
   - component: {fileID: 2505475346731696020}
+  - component: {fileID: 5957107364657524410}
   m_Layer: 6
   m_Name: Sticker
   m_TagString: Untagged
@@ -256,7 +297,7 @@ RectTransform:
   m_GameObject: {fileID: 8046239607402562404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1084013052155922529}
@@ -264,7 +305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.4, y: -2}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5366843767485989488
@@ -295,7 +336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a18c3b6b1d6a0a34eba7e776ac7869e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e223971afc657b49925c24cfc282fb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -326,3 +367,43 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -1
   m_TargetDisplay: 0
+--- !u!60 &5957107364657524410
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8046239607402562404}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 15.771595, y: -11.38667}
+      - {x: 17.975498, y: -5.7269664}
+      - {x: 17.157303, y: 6.3952727}
+      - {x: 11.913963, y: 12.090196}
+      - {x: 7.007595, y: 14.639238}
+      - {x: 9.728228, y: 15.3872385}
+      - {x: 10.010153, y: 18.945408}
+      - {x: 5.936829, y: 19.10691}
+      - {x: 0.3674761, y: 15.092396}
+      - {x: -6.17526, y: 15.250568}
+      - {x: -16.270432, y: 6.959278}
+      - {x: -16.975924, y: -7.6968}
+      - {x: -5.63721, y: -15.4744425}
+      - {x: 4.5067, y: -16.128378}
+      - {x: 12.404188, y: -13.390976}

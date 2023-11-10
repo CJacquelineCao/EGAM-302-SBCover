@@ -53,4 +53,9 @@ public class ModPanel : MonoBehaviour
     {
         SelectedSticker.GetComponent<Sticker>().moveLayerDown();
     }
+
+    public void Flip()
+    {
+        SelectedSticker.GetComponent<Sticker>().FlipHorizontal();
+    }
 }

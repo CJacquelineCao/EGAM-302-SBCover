@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4755693343969550269}
   - component: {fileID: 4165679360863050036}
   - component: {fileID: -7593305135561977506}
-  - component: {fileID: 9213413371018997800}
+  - component: {fileID: 549248792206919409}
   m_Layer: 5
   m_Name: SavedSticker
   m_TagString: StickerCombo
@@ -64,6 +64,7 @@ MonoBehaviour:
   _transform: {fileID: 0}
   canvasGroup: {fileID: 0}
   editorref: {fileID: 0}
+  comboref: {fileID: 0}
   Valid: 0
   Addded: 0
 --- !u!225 &-7593305135561977506
@@ -78,7 +79,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &9213413371018997800
+--- !u!114 &549248792206919409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4755693343969550264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4640bc188d5e3b342817f88ee0342548, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a7b98b68466df14792b25115e1ea52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   testUI: {fileID: 4755693343969550264}

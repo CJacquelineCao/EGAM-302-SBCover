@@ -34,6 +34,7 @@ public class ComboMenu : MonoBehaviour
             }
         }
 
+
     }
     public void addToList(GameObject stickerCombo, GameObject OGsticker)
     {
@@ -43,6 +44,7 @@ public class ComboMenu : MonoBehaviour
             {
                 allCombos[i].stickerSprite = stickerCombo;
                 allCombos[i].originalSticker = OGsticker;
+                break;
             }
         }
 
@@ -52,11 +54,15 @@ public class ComboMenu : MonoBehaviour
     {
         for (int i = 0; i < allCombos.Count; i++)
         {
-            allCombos[i].MenuSlot = Instantiate(allCombos[i].stickerSprite, allCombos[i].Location, Quaternion.identity);
-            allCombos[i].MenuSlot.transform.SetParent(gameObject.transform, false);
-            allCombos[i].MenuSlot.GetComponent<DragAndDrop>().enabled = false;
-            allCombos[i].MenuSlot.GetComponent<CreateStickerToDrag>().testUI = allCombos[i].originalSticker;
-            allCombos[i].MenuSlot.SetActive(true);
+            if(allCombos[i].stickerSprite !=null)
+            {
+                allCombos[i].MenuSlot = Instantiate(allCombos[i].stickerSprite, allCombos[i].Location, Quaternion.identity);
+                allCombos[i].MenuSlot.transform.SetParent(gameObject.transform, false);
+                allCombos[i].MenuSlot.GetComponent<DragAndDrop>().enabled = false;
+                allCombos[i].MenuSlot.GetComponent<IAmACombo>().testUI = allCombos[i].originalSticker;
+                allCombos[i].MenuSlot.SetActive(true);
+            }
+
         }
         generated = true;
     }

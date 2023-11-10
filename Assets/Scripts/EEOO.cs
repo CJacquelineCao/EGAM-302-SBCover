@@ -9,6 +9,8 @@ public class EEOO : MonoBehaviour, IDropHandler
     public List<GameObject> ComboStickers = new List<GameObject>();
     public Button savebutton;
     public bool canbeSaved;
+
+    public GameObject overlapdetection;
     public void OnDrop(PointerEventData eventData)
     {
         eventData.pointerDrag.GetComponent<DragAndDrop>().canvasGroup.alpha = 1;
@@ -16,6 +18,8 @@ public class EEOO : MonoBehaviour, IDropHandler
         {
             ComboStickers.Add(eventData.pointerDrag.gameObject);
             eventData.pointerDrag.GetComponent<DragAndDrop>().Addded = true;
+
+            overlapdetection.GetComponent<CheckOverlap>().checkOverlaps();
         }
     }
     // Start is called before the first frame update

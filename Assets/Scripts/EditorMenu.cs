@@ -16,7 +16,6 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
     public ComboMenu comboref;
     public GameObject ModPanel;
     public GameObject Container;
-    public List<int> allX = new List<int>();
 
     public float biggestInt;
     public float smallestInt;
@@ -49,7 +48,6 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
     {
         _transform = GetComponent<RectTransform>();
         _canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
-        test();
     }
 
     // Update is called once per frame
@@ -133,6 +131,10 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     void FindCenter(GameObject stickerCont)
     {
+        foreach (GameObject sticker in allStickers)
+        {
+            sticker.transform.SetParent(_canvas.transform, false);
+        }
         var totalX = 0f;
         var totalY = 0f;
         foreach (var sticker in allStickers)
@@ -142,7 +144,12 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
         }
         var centerX = totalX / allStickers.Count;
         var centerY = totalY / allStickers.Count;
-        stickerCont.transform.localPosition = new Vector3(centerX, centerY, 0);
+
+        stickerCont.transform.position = new Vector3(centerX, centerY, 0);
+        foreach (GameObject sticker in allStickers)
+        {
+            sticker.transform.SetParent(stickerCont.transform, true);
+        }
     }
     void CheckDistance()
     {
@@ -223,24 +230,7 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
             thickness -= 1;
         }
     }
-    void test()
-    {
-        for (int i = 0; i < allX.Count; i++)
-        {
-            smallestInt = allX[i];
-            if (allX[i] < smallestInt)
-            {
-                smallestInt = allX[i];
-            }
-            if (allX[i] > biggestInt)
-            {
-                biggestInt = allX[i];
-            }
 
-        }
-
-
-    }
 
     public void OnPointerDown(PointerEventData eventData)
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CreateStickerToDrag : MonoBehaviour, IInitializePotentialDragHandler, IDragHandler
+public class IAmACombo : MonoBehaviour,IInitializePotentialDragHandler, IDragHandler
 {
     public GameObject testUI;
     public GameObject parentCanvas;
@@ -17,24 +17,21 @@ public class CreateStickerToDrag : MonoBehaviour, IInitializePotentialDragHandle
     }
     private void Start()
     {
-       
+
         _transform = GetComponent<RectTransform>();
     }
 
     public void OnInitializePotentialDrag(PointerEventData eventData)
     {
         Debug.Log("" + _transform.anchoredPosition);
-        testUI.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
-
-        testUI.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
         createdsticker = Instantiate(testUI, _transform.position, Quaternion.identity);
         if (createdsticker.activeSelf == false)
         {
             createdsticker.SetActive(true);
-           
+
         }
         createdsticker.GetComponent<DragAndDrop>().enabled = true;
-        if(createdsticker.GetComponent<CreateStickerToDrag>() !=null)
+        if (createdsticker.GetComponent<CreateStickerToDrag>() != null)
         {
             createdsticker.GetComponent<CreateStickerToDrag>().enabled = false;
         }
@@ -44,10 +41,6 @@ public class CreateStickerToDrag : MonoBehaviour, IInitializePotentialDragHandle
     }
     public void OnDrag(PointerEventData eventData)
     {
-       
+
     }
-
-
-
-
 }

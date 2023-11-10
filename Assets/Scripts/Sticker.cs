@@ -24,6 +24,8 @@ public class Sticker : MonoBehaviour, IPointerDownHandler
     public EditorMenu editorRef;
 
     public int totalLayers;
+
+    bool isflipped;
     // Start is called before the first frame update
     void Start()
     {
@@ -106,6 +108,28 @@ public class Sticker : MonoBehaviour, IPointerDownHandler
             editorRef.allStickers.Insert(myIndex - 1, this.gameObject);
             editorRef.RefreshStickerOrder();
         }
+    }
+
+    public void FlipHorizontal()
+    {
+        if(isflipped == false)
+        {
+            ActualSticker.transform.localScale = new Vector3(transform.localScale.x * -1,
+            transform.localScale.y,
+            transform.localScale.z);
+            isflipped = true;
+        }
+        else
+        {
+            ActualSticker.transform.localScale = new Vector3(transform.localScale.x * 1,
+            transform.localScale.y,
+            transform.localScale.z);
+            isflipped = false;
+
+        }
+
+
+
     }
 
 }
