@@ -93,14 +93,12 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
     {
         for (int i = 0; i < allStickers.Count; i++)
         {
-            if(allStickers[i].GetComponent<DragAndDrop>().Valid == true)
-            {
-                canbeSaved = true;
-            }
-            else
+            if(allStickers[i].GetComponent<DragAndDrop>().Valid == false)
             {
                 canbeSaved = false;
+                break;
             }
+            canbeSaved = true;
         }
     }
 
@@ -110,7 +108,7 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
         StickerContainer.transform.SetParent(_canvas.transform, false);
         if (ModPanel.gameObject.activeSelf == true)
         {
-            ModPanel.SetActive(false);
+            ModPanel.GetComponent<ModPanel>().unParentModChannel();
         }
         foreach (GameObject sticker in allStickers)
         {
@@ -118,6 +116,7 @@ public class EditorMenu : MonoBehaviour, IDropHandler, IPointerDownHandler
             sticker.GetComponent<DragAndDrop>().enabled = false;
             sticker.GetComponent<Sticker>().inCombo = true;
         }
+        FindCenter(StickerContainer);
         GameObject originalSticker = Instantiate(StickerContainer, _transform.anchoredPosition, Quaternion.identity);
         originalSticker.SetActive(false);
         CheckDistance();

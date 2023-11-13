@@ -114,16 +114,12 @@ public class Sticker : MonoBehaviour, IPointerDownHandler
     {
         if(isflipped == false)
         {
-            ActualSticker.transform.localScale = new Vector3(transform.localScale.x * -1,
-            transform.localScale.y,
-            transform.localScale.z);
+            ActualSticker.transform.eulerAngles = new Vector3(ActualSticker.transform.rotation.x, 180, ActualSticker.transform.rotation.z);
             isflipped = true;
         }
         else
         {
-            ActualSticker.transform.localScale = new Vector3(transform.localScale.x * 1,
-            transform.localScale.y,
-            transform.localScale.z);
+            ActualSticker.transform.eulerAngles = new Vector3(ActualSticker.transform.rotation.x, 0, ActualSticker.transform.rotation.z);
             isflipped = false;
 
         }

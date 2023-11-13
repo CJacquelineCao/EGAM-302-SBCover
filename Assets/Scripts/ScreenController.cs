@@ -28,6 +28,7 @@ public class ScreenController : MonoBehaviour
     public void TurnonComboScreen()
     {
         editorref.CreateStickerCombo();
+        editorref.enabled = false;
         ComboScreen.SetActive(true);
         EditorScreen.SetActive(false);
         comboref.setStickersActive();
@@ -37,5 +38,6 @@ public class ScreenController : MonoBehaviour
         comboref.setStickersInactive();
         ComboScreen.SetActive(false);
         EditorScreen.SetActive(true);
+        editorref.enabled = true;
     }
 }
